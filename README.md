@@ -36,11 +36,19 @@ Al finalizar, el motor de cálculo matemático arroja los mejores emparejamiento
 
 Este proyecto está construido siguiendo principios sólidos de arquitectura de software y separación de intereses:
 
-- **Backend**: C# 13, .NET 10, ASP.NET Core MVC.
+- **Backend**: C# 13, .NET 9, ASP.NET Core MVC.
 - **Base de Datos**: Entity Framework Core con SQLite (para desarrollo local) y diseñado para PostgreSQL (para producción).
 - **Frontend**: Vanilla JavaScript (ES6+), CSS3 moderno, HTML5 Semántico.
 - **Arquitectura**: Enfoque de Clean Architecture separando responsabilidades en capas lógicas (`Core`, `Data` y `Web`).
 - **Pruebas Automatizadas**: MSTest para verificar el motor de cálculo y las reglas de empate.
+
+## ☁️ Stack de Despliegue
+
+La aplicación está preparada para ser desplegada en entornos modernos en la nube utilizando contenedores:
+
+- **Contenerización**: Docker (utilizando una imagen base optimizada y ligera `aspnet:9.0-alpine`).
+- **Hosting / PaaS**: Configurado para ser desplegado en [Render](https://render.com/), incluyendo los ajustes necesarios de red (desactivación de IPv6) y asignación automática de puertos.
+- **CI/CD**: El `Dockerfile` utiliza un proceso de construcción multi-etapa (multi-stage build) que restaura, compila y publica el proyecto automáticamente.
 
 ## 🚀 Instalación y Despliegue Local
 
