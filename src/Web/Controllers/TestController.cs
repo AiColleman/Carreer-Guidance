@@ -27,7 +27,7 @@ namespace Web.Controllers
             var sesion = new Sesion
             {
                 Id = Guid.NewGuid(),
-                FechaCreacion = DateTime.Now
+                FechaCreacion = DateTime.UtcNow
             };
             _context.Sesiones.Add(sesion);
             await _context.SaveChangesAsync();
