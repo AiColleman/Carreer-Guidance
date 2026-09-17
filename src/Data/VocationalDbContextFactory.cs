@@ -8,7 +8,7 @@ namespace Data
         public VocationalDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<VocationalDbContext>();
-            optionsBuilder.UseSqlite("Data Source=vocational.db");
+            optionsBuilder.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=postgres");
 
             return new VocationalDbContext(optionsBuilder.Options);
         }
