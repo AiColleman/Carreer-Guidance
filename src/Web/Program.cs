@@ -34,7 +34,12 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine("Schema incomplete or broken. Recreating from scratch...");
         try 
         {
-            db.Database.ExecuteSqlRaw("DROP SCHEMA public CASCADE; CREATE SCHEMA public; GRANT ALL ON SCHEMA public TO postgres; GRANT ALL ON SCHEMA public TO public;");
+            db.Database.ExecuteSqlRaw(@"
+                DROP TABLE IF EXISTS ""Respuestas"" CASCADE;
+                DROP TABLE IF EXISTS ""Sesiones"" CASCADE;
+                DROP TABLE IF EXISTS ""Actividades"" CASCADE;
+                DROP TABLE IF EXISTS ""Areas"" CASCADE;
+            ");
         }
         catch (Exception ex)
         {
