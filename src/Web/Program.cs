@@ -8,14 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<VocationalDbContext>(options =>
 {
     var conn = builder.Configuration.GetConnectionString("DefaultConnection");
-    if (builder.Environment.IsDevelopment())
-    {
-        options.UseSqlite("Data Source=vocational.db");
-    }
-    else
-    {
-        options.UseNpgsql(conn);
-    }
+    options.UseNpgsql(conn ?? "Host=localhost;Database=postgres;Username=postgres;Password=postgres");
 });
 
 var app = builder.Build();
