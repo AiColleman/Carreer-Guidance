@@ -40,14 +40,14 @@ using (var scope = app.Services.CreateScope())
                 DROP TABLE IF EXISTS ""Actividades"" CASCADE;
                 DROP TABLE IF EXISTS ""Areas"" CASCADE;
             ");
+            
+            var script = db.Database.GenerateCreateScript();
+            db.Database.ExecuteSqlRaw(script);
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error dropping schema: " + ex.Message);
+            Console.WriteLine("Error recreating schema: " + ex.Message);
         }
-        
-        // This will create all tables and run the seed data
-        db.Database.EnsureCreated();
     }
 }
 
