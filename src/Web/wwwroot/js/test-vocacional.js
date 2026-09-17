@@ -33,7 +33,7 @@
     // ---- Send swipe response to server ----
     async function sendSwipe(actividadId, meInteresa) {
         try {
-            await fetch('/Test/Swipe', {
+            const response = await fetch('/Test/Swipe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -42,8 +42,13 @@
                     meInteresa: meInteresa
                 })
             });
+            if (!response.ok) {
+                throw new Error("Servidor retornó error: " + response.status);
+            }
         } catch (err) {
             console.error('Error al enviar respuesta:', err);
+            alert("Hubo un error de conexión o la sesión caducó. Por favor, inicia el test nuevamente.");
+            window.location.href = '/Test/Start';
         }
     }
 
@@ -73,7 +78,7 @@
 
             // Check if test is complete
             if (currentIndex >= totalCards) {
-                window.location.href = '/Test/Results?sesionId=' + sesionId;
+                window.location.href = '/Test/Results?sesionId=' + sesionId + '&_t=' + new Date().getTime();
                 return;
             }
 

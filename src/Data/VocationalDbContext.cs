@@ -45,7 +45,7 @@ namespace Data
                 new Actividad { Id = 15, Numero = 15, AreaId = 3, TextoActividad = "Controlar ingresos y egresos de fondos y presentar el balance final de una institución" },
                 new Actividad { Id = 16, Numero = 16, AreaId = 5, TextoActividad = "Hacer experimentos con plantas (frutas, árboles, flores)" },
                 new Actividad { Id = 17, Numero = 17, AreaId = 4, TextoActividad = "Concebir planos para viviendas, edificios y ciudadelas" },
-                new Actividad { Id = 18, Numero = 18, AreaId = 5, TextoActividad = "Investigar y probar nuevos productos farmacéuticos" },
+                new Actividad { Id = 18, Numero = 18, AreaId = 4, TextoActividad = "Investigar y probar nuevos productos farmacéuticos" },
                 new Actividad { Id = 19, Numero = 19, AreaId = 3, TextoActividad = "Hacer propuestas y formular estrategias para aprovechar las relaciones económicas entre dos países" },
                 new Actividad { Id = 20, Numero = 20, AreaId = 1, TextoActividad = "Pintar, hacer esculturas, ilustrar libros de arte, etcétera" },
                 new Actividad { Id = 21, Numero = 21, AreaId = 3, TextoActividad = "Elaborar campañas para introducir un nuevo producto al mercado" },

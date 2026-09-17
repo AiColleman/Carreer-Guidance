@@ -20,6 +20,7 @@ namespace Web.Controllers
 
         // GET /Test/Start
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public async Task<IActionResult> Start()
         {
             // Crear nueva sesión
@@ -62,14 +63,19 @@ namespace Web.Controllers
             return Ok(new { success = true });
         }
 
-        // GET /Test/Results/{sesionId}
+        // GET /Test/Results
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public async Task<IActionResult> Results(Guid sesionId)
         {
+            Console.WriteLine($"[DEBUG] Results requested for SesionId: {sesionId}");
+
             var respuestas = await _context.Respuestas
                 .Where(r => r.SesionId == sesionId)
                 .Include(r => r.Actividad)
                 .ToListAsync();
+
+            Console.WriteLine($"[DEBUG] Found {respuestas.Count} respuestas for SesionId: {sesionId}");
 
             var areas = await _context.Areas.ToListAsync();
 

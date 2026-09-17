@@ -17,7 +17,7 @@
         @for (int i = 0; i < Model.Count; i++)
         {
             var resultado = Model[i];
-            var isFirst = i == 0;
+            var isFirst = resultado.Puntos == Model[0].Puntos;
             <div class="result-card @(isFirst ? "result-card-primary" : "result-card-secondary")">
                 <div class="result-rank">@(isFirst ? "🥇 Primera Opción" : "🥈 Segunda Opción")</div>
                 <h2 class="result-area-name">@resultado.NombreArea</h2>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="results-actions">
-        <a href="/Test/Start" class="btn-restart">
+        <a href="/Test/Start?_t=@DateTime.Now.Ticks" class="btn-restart">
             🔄 Realizar el test nuevamente
         </a>
     </div>
