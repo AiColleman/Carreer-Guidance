@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # Copiamos la solución y los proyectos para restaurar las dependencias
-COPY ["TestVocacional.sln", "./"]
+COPY ["VocationalTest.slnx", "./"]
 COPY ["src/Web/Web.csproj", "src/Web/"]
 COPY ["src/Core/Core.csproj", "src/Core/"]
 COPY ["src/Data/Data.csproj", "src/Data/"]
