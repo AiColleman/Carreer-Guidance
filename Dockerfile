@@ -22,9 +22,12 @@ FROM build AS publish
 RUN dotnet publish "Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Etapa 3: Producción
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# Prevenir Segmentation Faults en Render desactivando IPv6
+ENV DOTNET_SYSTEM_NET_DISABLEIPV6=1
 
 # Render expone el puerto 80 por defecto mediante la variable PORT
 ENV ASPNETCORE_URLS=http://+:80
