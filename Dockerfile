@@ -29,8 +29,7 @@ COPY --from=publish /app/publish .
 # Prevenir Segmentation Faults en Render desactivando IPv6
 ENV DOTNET_SYSTEM_NET_DISABLEIPV6=1
 
-# Render expone el puerto 80 por defecto mediante la variable PORT
-ENV ASPNETCORE_URLS=http://+:80
-EXPOSE 80
+# Render asigna el puerto automáticamente mediante la variable PORT
+# Así que no forzamos el puerto 80 aquí.
 
 ENTRYPOINT ["dotnet", "Web.dll"]
