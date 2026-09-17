@@ -18,10 +18,17 @@
     --radius: 20px;
 }
 
+html, body {
+    overflow: hidden;
+    height: 100%;
+    touch-action: none;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: var(--color-bg) !important;
     font-family: 'Inter', sans-serif !important;
-    min-height: 100vh;
     color: var(--color-text);
 }
 
@@ -29,11 +36,12 @@ body {
 .test-container {
     max-width: 480px;
     margin: 0 auto;
-    padding: 20px 16px 40px;
-    min-height: 100vh;
+    padding: 16px 16px 24px;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 /* ---- Header ---- */
@@ -97,8 +105,10 @@ body {
     position: relative;
     width: 100%;
     max-width: 400px;
-    height: 340px;
-    margin-bottom: 28px;
+    flex: 1; /* Take up all available space between header and buttons */
+    min-height: 280px;
+    max-height: 60vh; /* Don't grow too large */
+    margin-bottom: 24px;
 }
 
 .swipe-card {
