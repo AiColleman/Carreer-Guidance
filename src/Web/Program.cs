@@ -42,7 +42,7 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        Console.WriteLine(""Error forcing table creation: "" + ex.Message);
+        Console.WriteLine("Error forcing table creation: " + ex.Message);
     }
 }
 
