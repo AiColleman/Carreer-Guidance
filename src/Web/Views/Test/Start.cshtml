@@ -1,0 +1,69 @@
+@model List<Core.Entities.Actividad>
+@{
+    ViewData["Title"] = "Test Vocacional";
+    var sesionId = ViewBag.SesionId;
+}
+
+<link rel="stylesheet" href="~/css/test-vocacional.css" />
+
+<div class="test-container">
+    <!-- Header -->
+    <div class="test-header">
+        <h1 class="test-title">🎯 Test Vocacional</h1>
+        <p class="test-subtitle">Descubre tu vocación ideal</p>
+        <div class="progress-container">
+            <div class="progress-bar-custom">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">1 / 80</span>
+        </div>
+    </div>
+
+    <!-- Card Stack -->
+    <div class="card-stack" id="cardStack">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var act = Model[i];
+            <div class="swipe-card @(i == 0 ? "active" : "")"
+                 data-index="@i"
+                 data-actividad-id="@act.Id"
+                 data-area="@act.Area.Nombre"
+                 style="z-index: @(Model.Count - i); @(i > 2 ? "display:none;" : "")">
+                <div class="card-content">
+                    <span class="card-number">#@act.Numero</span>
+                    <p class="card-text">@act.TextoActividad</p>
+                    <span class="card-area-badge">@act.Area.Nombre</span>
+                </div>
+                <div class="card-overlay card-overlay-like" id="overlayLike_@i">
+                    <span>👍 Me interesa</span>
+                </div>
+                <div class="card-overlay card-overlay-nope" id="overlayNope_@i">
+                    <span>👎 No me interesa</span>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button class="btn-action btn-nope" id="btnNope" title="No me interesa">
+            <span class="btn-icon">✕</span>
+            <span class="btn-label">No me interesa</span>
+        </button>
+        <button class="btn-action btn-like" id="btnLike" title="Me interesa">
+            <span class="btn-icon">♥</span>
+            <span class="btn-label">Me interesa</span>
+        </button>
+    </div>
+
+    <!-- Instruction -->
+    <p class="instruction-text">
+        Desliza a la <strong>derecha</strong> o haz clic en <strong>♥</strong> si te interesa.<br>
+        Desliza a la <strong>izquierda</strong> o haz clic en <strong>✕</strong> si no te interesa.
+    </p>
+</div>
+
+<input type="hidden" id="sesionId" value="@sesionId" />
+<input type="hidden" id="totalCards" value="@Model.Count" />
+
+<script src="~/js/test-vocacional.js"></script>

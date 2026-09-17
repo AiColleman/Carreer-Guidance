@@ -1,0 +1,44 @@
+@model List<Core.Models.VocationalResult>
+@{
+    ViewData["Title"] = "Resultados del Test Vocacional";
+    var totalRespuestas = ViewBag.TotalRespuestas;
+}
+
+<link rel="stylesheet" href="~/css/test-vocacional.css" />
+
+<div class="results-container">
+    <div class="results-header">
+        <div class="results-icon">🎓</div>
+        <h1 class="results-title">¡Tus Resultados!</h1>
+        <p class="results-subtitle">Basado en tus @totalRespuestas respuestas, estas son tus áreas vocacionales principales:</p>
+    </div>
+
+    <div class="results-cards">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var resultado = Model[i];
+            var isFirst = i == 0;
+            <div class="result-card @(isFirst ? "result-card-primary" : "result-card-secondary")">
+                <div class="result-rank">@(isFirst ? "🥇 Primera Opción" : "🥈 Segunda Opción")</div>
+                <h2 class="result-area-name">@resultado.NombreArea</h2>
+                <div class="result-score">
+                    <span class="score-number">@resultado.Puntos</span>
+                    <span class="score-label">puntos</span>
+                </div>
+                <div class="result-bar-container">
+                    <div class="result-bar" style="width: @(Math.Min(resultado.Puntos * 100 / 16, 100))%"></div>
+                </div>
+                <div class="result-professions" style="margin-top: 16px; font-size: 0.9rem; color: #b0b0b0; text-align: left; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
+                    <strong>Profesiones afines:</strong><br/>
+                    @resultado.Profesiones
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="results-actions">
+        <a href="/Test/Start" class="btn-restart">
+            🔄 Realizar el test nuevamente
+        </a>
+    </div>
+</div>
