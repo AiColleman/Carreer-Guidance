@@ -18,7 +18,7 @@
     --radius: 20px;
 }
 
-html, body {
+html.locked-viewport, body.locked-viewport {
     overflow: hidden;
     height: 100%;
     touch-action: none;
@@ -30,6 +30,8 @@ body {
     background: var(--color-bg) !important;
     font-family: 'Inter', sans-serif !important;
     color: var(--color-text);
+    margin: 0;
+    padding: 0;
 }
 
 /* ---- Test Container ---- */
