@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="MSTest" Version="4.0.1" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0-preview.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Testcontainers.MsSql" Version="4.15.0" />
   </ItemGroup>
 
