@@ -1,21 +1,33 @@
 /* ==========================================
    TEST VOCACIONAL - Swipe Cards Styles
+   Premium Deep Ocean + Gold Palette
    ========================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --color-bg: #0f0f1a;
-    --color-surface: #1a1a2e;
-    --color-card: #16213e;
-    --color-primary: #6c63ff;
-    --color-like: #00c853;
-    --color-nope: #ff1744;
-    --color-text: #e0e0e0;
-    --color-text-muted: #8a8a9a;
-    --color-accent: #e94560;
-    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.4);
-    --radius: 20px;
+    /* Deep midnight ocean background */
+    --color-bg: #0a0e1a;
+    --color-surface: #111827;
+    --color-card: #1e293b;
+
+    /* Teal/Cyan primary → Warm Gold accent */
+    --color-primary: #06b6d4;
+    --color-accent: #f59e0b;
+
+    /* Like / Nope with refined tones */
+    --color-like: #10b981;
+    --color-nope: #ef4444;
+
+    /* Text hierarchy */
+    --color-text: #e2e8f0;
+    --color-text-muted: #94a3b8;
+
+    /* Refined shadows & radius */
+    --shadow-card: 0 12px 48px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(6, 182, 212, 0.06);
+    --shadow-glow-primary: 0 0 24px rgba(6, 182, 212, 0.25);
+    --shadow-glow-accent: 0 0 24px rgba(245, 158, 11, 0.2);
+    --radius: 22px;
 }
 
 html.locked-viewport, body.locked-viewport {
@@ -28,6 +40,9 @@ html.locked-viewport, body.locked-viewport {
 
 body {
     background: var(--color-bg) !important;
+    background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(245, 158, 11, 0.05) 0%, transparent 50%) !important;
     font-family: 'Inter', sans-serif !important;
     color: var(--color-text);
     margin: 0;
@@ -56,11 +71,18 @@ body {
 .test-title {
     font-size: 1.8rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(135deg, var(--color-primary), #22d3ee, var(--color-accent));
+    background-size: 200% 200%;
+    animation: shimmerTitle 4s ease infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 4px;
+}
+
+@keyframes shimmerTitle {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .test-subtitle {
@@ -80,7 +102,7 @@ body {
 .progress-bar-custom {
     flex: 1;
     height: 8px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 99px;
     overflow: hidden;
 }
@@ -88,9 +110,10 @@ body {
 .progress-fill {
     height: 100%;
     width: 1.25%;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(90deg, var(--color-primary), #22d3ee, var(--color-accent));
     border-radius: 99px;
-    transition: width 0.4s ease;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
 }
 
 .progress-text {
@@ -120,29 +143,34 @@ body {
     width: 100%;
     height: 320px;
     background: var(--color-card);
+    background-image: linear-gradient(145deg, rgba(6, 182, 212, 0.04) 0%, transparent 40%, rgba(245, 158, 11, 0.03) 100%);
     border-radius: var(--radius);
     box-shadow: var(--shadow-card);
     cursor: grab;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    transition: transform 0.18s ease, opacity 0.18s ease;
     user-select: none;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(6, 182, 212, 0.1);
+    /* Glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .swipe-card:nth-child(2) {
     transform: scale(0.96) translateY(12px);
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .swipe-card:nth-child(3) {
     transform: scale(0.92) translateY(24px);
-    opacity: 0.4;
+    opacity: 0.35;
 }
 
 .swipe-card.active {
     transform: scale(1) translateY(0);
     opacity: 1;
     cursor: grab;
+    border-color: rgba(6, 182, 212, 0.15);
 }
 
 .swipe-card.active:active {
@@ -166,18 +194,19 @@ body {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--color-primary);
-    background: rgba(108, 99, 255, 0.15);
+    background: rgba(6, 182, 212, 0.12);
     padding: 4px 14px;
     border-radius: 99px;
     margin-bottom: 20px;
     letter-spacing: 1px;
+    border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
 .card-text {
     font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.5;
-    color: #fff;
+    color: #f1f5f9;
     margin-bottom: 20px;
     flex: 1;
     display: flex;
@@ -187,11 +216,11 @@ body {
 .card-area-badge {
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--color-text-muted);
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-accent);
+    background: rgba(245, 158, 11, 0.08);
     padding: 6px 16px;
     border-radius: 99px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.15);
 }
 
 /* ---- Overlays (like/nope indicators) ---- */
@@ -214,13 +243,13 @@ body {
 }
 
 .card-overlay-like {
-    background: rgba(0, 200, 83, 0.15);
+    background: rgba(16, 185, 129, 0.12);
     border: 3px solid var(--color-like);
     color: var(--color-like);
 }
 
 .card-overlay-nope {
-    background: rgba(255, 23, 68, 0.15);
+    background: rgba(239, 68, 68, 0.12);
     border: 3px solid var(--color-nope);
     color: var(--color-nope);
 }
@@ -268,26 +297,35 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    position: relative;
 }
 
 .btn-action:hover {
-    transform: scale(1.12);
+    transform: scale(1.14);
 }
 
 .btn-action:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
 }
 
 .btn-nope {
-    background: linear-gradient(135deg, #ff1744, #d50000);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: white;
 }
 
+.btn-nope:hover {
+    box-shadow: 0 8px 28px rgba(239, 68, 68, 0.4);
+}
+
 .btn-like {
-    background: linear-gradient(135deg, #00c853, #00a843);
+    background: linear-gradient(135deg, #10b981, #059669);
     color: white;
+}
+
+.btn-like:hover {
+    box-shadow: 0 8px 28px rgba(16, 185, 129, 0.4);
 }
 
 .btn-icon {
@@ -324,12 +362,21 @@ body {
 .results-icon {
     font-size: 4rem;
     margin-bottom: 8px;
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .results-title {
     font-size: 2.2rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(135deg, var(--color-primary), #22d3ee, var(--color-accent));
+    background-size: 200% 200%;
+    animation: shimmerTitle 4s ease infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -351,17 +398,21 @@ body {
 
 .result-card {
     background: var(--color-card);
+    background-image: linear-gradient(145deg, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
     border-radius: var(--radius);
     padding: 28px 24px;
     box-shadow: var(--shadow-card);
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(6, 182, 212, 0.08);
     animation: fadeInUp 0.6s ease both;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .result-card-primary {
-    border-color: rgba(108, 99, 255, 0.3);
-    background: linear-gradient(145deg, var(--color-card), rgba(108, 99, 255, 0.08));
+    border-color: rgba(6, 182, 212, 0.25);
+    background: linear-gradient(145deg, var(--color-card), rgba(6, 182, 212, 0.08));
+    box-shadow: var(--shadow-card), var(--shadow-glow-primary);
 }
 
 .result-card:nth-child(2) { animation-delay: 0.2s; }
@@ -377,7 +428,7 @@ body {
 .result-area-name {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #fff;
+    color: #f1f5f9;
     margin-bottom: 12px;
 }
 
@@ -406,35 +457,38 @@ body {
 .result-bar-container {
     width: 100%;
     height: 8px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 99px;
     overflow: hidden;
 }
 
 .result-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(90deg, var(--color-primary), #22d3ee, var(--color-accent));
     border-radius: 99px;
-    transition: width 1s ease;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 6px rgba(6, 182, 212, 0.3);
 }
 
 /* ---- Restart Button ---- */
 .btn-restart {
     display: inline-block;
     padding: 14px 36px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(135deg, var(--color-primary), #0891b2, var(--color-accent));
+    background-size: 200% 200%;
+    animation: shimmerTitle 3s ease infinite;
     color: #fff;
     font-weight: 700;
     font-size: 1rem;
     border-radius: 99px;
     text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 24px rgba(6, 182, 212, 0.3);
 }
 
 .btn-restart:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(6, 182, 212, 0.4), var(--shadow-glow-primary);
     color: #fff;
 }
 

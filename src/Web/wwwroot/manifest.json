@@ -3,8 +3,8 @@
   "short_name": "Vocacional",
   "start_url": "/Test/Start",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#2c3e50",
+  "background_color": "#0a0e1a",
+  "theme_color": "#06b6d4",
   "orientation": "portrait",
   "icons": [
     {
